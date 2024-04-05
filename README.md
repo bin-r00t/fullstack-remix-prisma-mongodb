@@ -34,3 +34,6 @@ Make sure to deploy the output of `npm run build`
 
 - `build/server`
 - `build/client`
+
+### reference
+https://www.prisma.io/blog/fullstack-remix-prisma-mongodb-2-ZTmOy58p4re8
