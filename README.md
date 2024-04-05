@@ -1,6 +1,6 @@
-# Welcome to Remix + Vite!
-
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
+## Issues
+- 使用 remix vite:dev 的时候，会导致 tailwindcss 报错，然后导致我 Form/form 标签下的 button
+或 a 的正常功能不生效...
 
 ## Development
 

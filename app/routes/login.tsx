@@ -1,7 +1,6 @@
 import { ActionFunction } from "@remix-run/node";
 import { Form, Link, useNavigation } from "@remix-run/react";
 import { EventHandler, MouseEventHandler, useEffect, useState } from "react";
-import { redirect } from "react-router";
 import { Card } from "~/components/card";
 import { Layout } from "~/components/layout";
 
@@ -10,7 +9,7 @@ export default function Login() {
   const navigation = useNavigation();
   const lock = navigation.state !== "idle";
 
-  const handleLinkClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+  const handleLinkClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     setSignup((signup) => !signup);
   };
@@ -18,7 +17,9 @@ export default function Login() {
   return (
     <Layout>
       <div className="flex h-full flex-col gap-5 justify-center items-center">
-        <h2 className="text-white font-bold text-3xl text-left">Sign In</h2>
+        <h2 className="text-white font-bold text-3xl text-left">
+          {signup ? "Sign Up" : "Sign In"}
+        </h2>
         <Card className={"w-96"}>
           <Form method="post" className="flex flex-col gap-8">
             <div className="form-item shadow-2xl flex flex-col divide-y">
@@ -37,33 +38,34 @@ export default function Login() {
             <div className="form-item shadow-lg">
               <input
                 type="submit"
-                value={lock ? "Submitting..." : "Sign in"}
+                disabled={lock}
+                value={lock ? "Submitting..." : signup ? "Sign up" : "Sign in"}
                 className="bg-slate-500 block p-3 w-full rounded-xl text-lg font-semibold cursor-pointer hover:bg-slate-400 transition text-white"
               />
             </div>
             {!signup && (
               <p className="form-item text-white text-sm text-center">
                 Don't have an account?{" "}
-                <a
-                  href=""
+                <button
+                  type="button"
+                  onClick={handleLinkClick}
                   className="text-slate-400 font-semibold underline underline-offset-1"
                 >
                   Sign up
-                </a>{" "}
+                </button>{" "}
                 here.
               </p>
             )}
             {signup && (
               <p className="form-item text-white text-sm text-center">
                 Already have an account?{" "}
-                <a
-                  href=""
+                <button
                   type="button"
                   onClick={handleLinkClick}
                   className="text-slate-400 font-semibold underline underline-offset-1"
                 >
                   Login
-                </a>
+                </button>
                 .
               </p>
             )}
