@@ -30,6 +30,6 @@ export default function App() {
   return <Outlet />;
 }
 
-export const links: LinksFunction = () => {
+export const links: LinksFunction = function () {
   return [{ rel: "stylesheet", href: styles }];
 };
